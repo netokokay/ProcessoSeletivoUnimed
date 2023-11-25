@@ -1,0 +1,9 @@
+select
+Tbl_Categorias.nome_categoria,
+count(Tbl_Produtos.id_produto) as numero_produtos
+from
+Tbl_Categorias
+join
+Tbl_Produtos on Tbl_Categorias.id_categoria = Tbl_Produtos.id_categoria
+group by
+Tbl_Categorias.id_categoria, Tbl_Categorias.nome_categoria;
