@@ -1,0 +1,10 @@
+select 
+Tbl_Clientes.nome_cliente as id_cliente,
+Tbl_Pedidos.id_pedido as id_pedido,
+Tbl_Pedidos.data_pedido
+from 
+Tbl_Pedidos
+join 
+Tbl_Clientes on Tbl_Pedidos.id_cliente = Tbl_Clientes.id_cliente
+order by 
+Tbl_Pedidos.data_pedido desc;
