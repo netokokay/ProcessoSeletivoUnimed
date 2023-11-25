@@ -1,0 +1,79 @@
+create database unimedBD;
+
+use unimedBD;
+
+create table Tbl_Clientes(
+id_cliente int auto_increment not null primary key,
+nome_cliente varchar(60),
+email_cliente varchar(30)
+);
+
+select*from Tbl_Clientes;
+insert into Tbl_Clientes (nome_cliente, email_cliente) values ('Maria','maria@email.com');
+insert into Tbl_Clientes (nome_cliente, email_cliente) values ('Joaquim','joaquim@email.com');
+insert into Tbl_Clientes (nome_cliente, email_cliente) values ('Fernando','fernando@email.com');
+
+create table Tbl_Categorias(
+id_categoria int auto_increment not null primary key,
+nome_categoria varchar(30)
+);
+
+insert into Tbl_Categorias(nome_categoria)values('Produtos de Limpeza');
+select*from Tbl_Categorias;
+
+create table Tbl_Produtos(
+id_produto int auto_increment not null primary key,
+nome_produto varchar(40),
+id_categoria int not null,
+foreign key(id_categoria) references Tbl_Categorias(id_categoria)
+);
+
+insert into Tbl_Produtos(nome_produto,id_categoria)values('Sabão','1');
+insert into Tbl_Produtos(nome_produto,id_categoria)values('Detergente','1');
+select*from Tbl_Produtos;
+
+create table Tbl_Pedidos(
+id_pedido int auto_increment not null primary key,
+id_cliente int not null,
+foreign key(id_cliente) references Tbl_Clientes(id_cliente),
+id_produto int not null,
+foreign key(id_produto) references Tbl_Produtos(id_produto),
+quantidade_produto int not null,
+data_pedido DATE
+);
+
+insert into Tbl_Pedidos(id_cliente,id_produto,quantidade_produto,data_pedido)values('3','1','4','2023-11-23');
+insert into Tbl_Pedidos(id_cliente,id_produto,quantidade_produto,data_pedido)values('2','2','5','2023-11-24');
+insert into Tbl_Pedidos(id_cliente,id_produto,quantidade_produto,data_pedido)values('1','2','3','2023-11-25');
+select*from Tbl_Pedidos;
+
+create table Tbl_Funcionarios(
+id_funcionario int auto_increment not null primary key,
+nome_funcionario varchar(60),
+cargo_funcionario varchar(30),
+salario_funcionario decimal(10, 2)
+);
+
+insert into Tbl_Funcionarios(nome_funcionario,cargo_funcionario,salario_funcionario)values('Joana','Porteira','72000');
+insert into Tbl_Funcionarios(nome_funcionario,cargo_funcionario,salario_funcionario)values('Jose Neto','Desenvolvedor','2000');
+select*from Tbl_Funcionarios;
+
+create table Tbl_Alunos(
+id_aluno int auto_increment not null primary key,
+nome_aluno varchar(60)
+);
+
+insert into Tbl_Alunos(nome_aluno)values('Marcos');
+select*from Tbl_Alunos;
+
+
+create table Tbl_Notas(
+id_nota int auto_increment not null primary key,
+id_aluno int not null,
+foreign key(id_aluno) references Tbl_Alunos(id_aluno),
+disciplina varchar(30),
+nota decimal(2, 1)
+);
+
+insert into Tbl_Notas(id_aluno,disciplina,nota)values('2','Ingles','7');
+select*from Tbl_Notas;
