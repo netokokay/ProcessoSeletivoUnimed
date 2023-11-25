@@ -1,0 +1,8 @@
+select
+nome_funcionario,
+cargo_funcionario,
+salario_funcionario
+from
+Tbl_Funcionarios
+where
+salario_funcionario > 50000;
