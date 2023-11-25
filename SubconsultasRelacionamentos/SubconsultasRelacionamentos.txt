@@ -1,0 +1,9 @@
+select
+Tbl_Alunos.nome_aluno as nome_aluno,
+avg(Tbl_Notas.nota) as media_notas
+from
+Tbl_Alunos
+join
+Tbl_Notas on Tbl_Alunos.id_aluno = Tbl_Notas.id_aluno
+group by
+Tbl_Alunos.id_aluno, Tbl_Alunos.nome_aluno;
