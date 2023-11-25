@@ -1,0 +1,10 @@
+select
+Tbl_Clientes.nome_cliente,
+Tbl_Pedidos.id_pedido,
+sum(Tbl_Pedidos.quantidade_produto) as quantidade_total
+from
+Tbl_Pedidos
+join
+Tbl_Clientes on Tbl_Pedidos.id_cliente = Tbl_Clientes.id_cliente
+group by
+Tbl_Pedidos.id_pedido, Tbl_Clientes.nome_cliente;
